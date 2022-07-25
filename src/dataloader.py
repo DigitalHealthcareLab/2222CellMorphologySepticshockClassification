@@ -8,7 +8,7 @@ from config import *
 from torch.utils.data import DataLoader, Dataset
 import cv2
 import torchvision.transforms as transforms
-from src.normalization import normalize_individual_image
+from src.normalize import normalize_individual_image
 
 
 
@@ -56,11 +56,11 @@ train_transform = transforms.Compose([
     transforms.RandomRotation(20),
     transforms.RandomHorizontalFlip(),
     transforms.RandomVerticalFlip(),
-    transforms.Normalize(13370.405,143.7316)
+    #transforms.Normalize(13370.405,143.7316)
 ])
 
 test_transform = transforms.Compose([
-    transforms.Normalize(13370.405,143.7316)
+    #transforms.Normalize(13370.405,143.7316)
                 ])
 
 def get_augmentation_dataset(x_train_path, y_train_path, x_valid_path, y_valid_path, x_test_path, y_test_path):
@@ -87,6 +87,11 @@ def get_augmentation_loader(train, valid, test, batch_size):
     
     return loader
 
+def get_test_augmentation_loader(test, batch_size):
+    loader = {}
+    loader['test'] = DataLoader(test, batch_size = batch_size,  shuffle = False, pin_memory = True)
+    return loader
+    
 
 def get_test_augmentation_dataset(x_test_path, y_test_path):
     test_df = torch.Tensor(normalize_individual_image(np.load(x_test_path).astype('float64'))).unsqueeze(1)
