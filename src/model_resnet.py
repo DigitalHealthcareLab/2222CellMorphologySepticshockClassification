@@ -163,4 +163,4 @@ def create_regression_resnet(device):
     return ResNet152(1,1).to(device)
 
 def create_classification_resnet(device):
-    return ResNet50(1,2).to(device)
+    return ResNet152(1,2).to(device)
