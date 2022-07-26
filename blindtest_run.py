@@ -21,11 +21,11 @@ def main(remove_patient:int, celltype:str):
 
     logger = set_logger()
     device = get_device()
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 
     print('get model')
-    model = create_classification_resnet(device)
-    #model = nn.DataParallel(model)
+    model = create_classification_ANN(device)
+    model = nn.DataParallel(model)
 
     optimizer = get_optim(model, LEARNING_RATE, WEIGHT_DECAY, ADAM_EPSILON)
     scheduler = create_scheduler(optimizer)
@@ -55,12 +55,12 @@ def main(remove_patient:int, celltype:str):
 
     best_model, train_loss_history, val_loss_history =  train_model_v2(model, NUM_EPOCH, dataloaders, criterion, optimizer, device, scheduler, early_stopping)
 
-    torch.save(best_model, f'model/blind_test/blindtest_{remove_patient}_{celltype}_model_1.pt') 
+    torch.save(best_model, f'model/blind_test/blindtest_{remove_patient}_{celltype}_model_2.pt') 
     LOSS_PATH = f'model/plot/blindtest_{remove_patient}_{celltype}'
     save_loss_plot(train_loss_history, val_loss_history, LOSS_PATH)
     plt.clf()
 
 if __name__ == '__main__':
     main(2, 'cd8')
-    main(2, 'cd4')
+   # main(2, 'cd4')
 
