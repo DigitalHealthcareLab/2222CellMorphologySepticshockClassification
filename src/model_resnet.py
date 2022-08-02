@@ -2,6 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F 
 
+import torch
+import torch.nn as nn
+
 class block(nn.Module):
     def __init__(self, in_channels, intermediate_channels, identity_downsample=None, stride=1):
         super(block, self).__init__()
@@ -42,25 +45,16 @@ class block(nn.Module):
       #  print(x.shape)
         identity = x.clone()
 
-        x = F.relu(self.conv1(x))
+        x = self.conv1(x)
         x = self.bn1(x)
+        x = self.relu(x)
 
-        x = F.relu(self.conv2(x))
+        x = self.conv2(x)
         x = self.bn2(x)
+        x = self.relu(x)       
 
-        x = F.relu(self.conv3(x))
+        x = self.conv3(x)
         x = self.bn3(x)
-        # x = self.conv1(x)
-        # x = self.bn1(x)
-        # x = self.relu(x)
-
-        # x = self.conv2(x)
-        # x = self.bn2(x)
-        # x = self.relu(x)       
-
-        # x = self.conv3(x)
-        # x = self.bn3(x)
-       # x = self.dropout(x)  # block 부분에도 추가적으로 쌓아서 진행해주기 
 
 
         if self.identity_downsample is not None:
@@ -91,14 +85,14 @@ class ResNet(nn.Module):  # [3,4,6,3]-> list
             padding=1)
 
         # ResNet layers 
-        self.layer1 = self._make_layer(block, layers[0], intermediate_channels=64, stride=1)
-        self.layer2 = self._make_layer(block, layers[1], intermediate_channels=128,stride=2)
-        self.layer3 = self._make_layer(block, layers[2], intermediate_channels=256, stride=2)
-        self.layer4 = self._make_layer(block, layers[3], intermediate_channels=512, stride=2)
+        self.layer1 = self._make_layer(block, layers[0], intermediate_channels=32, stride=1)
+        self.layer2 = self._make_layer(block, layers[1], intermediate_channels=64,stride=2)
+        self.layer3 = self._make_layer(block, layers[2], intermediate_channels=128, stride=2)
+        self.layer4 = self._make_layer(block, layers[3], intermediate_channels=256, stride=2)
 
         self.avgpool = nn.AdaptiveAvgPool3d((1,1,1))
-        self.fc = nn.Linear(512*4, num_classes)
-        self.dropout = nn.Dropout(0.7)
+        self.fc = nn.Linear(256*4, num_classes)
+        self.dropout = nn.Dropout(0.2)
      #   self.BatchNorm3 = nn.BatchNorm3d(512)
 
 
@@ -140,13 +134,12 @@ class ResNet(nn.Module):  # [3,4,6,3]-> list
                 nn.BatchNorm3d(intermediate_channels*4))
 
         layers.append(block(self.in_channels, intermediate_channels, identity_downsample, stride)) # layer that change the number of channels 
-        self.in_channels = intermediate_channels*4 
+        self.in_channels = intermediate_channels*4 # 256 -> 64* 4 
 
         for i in range(num_residual_blocks - 1):     # -1은 바로 위에 layers.append 여기 부분으로 layer하나가 이미 있기 때문
             layers.append(block(self.in_channels, intermediate_channels))  # input : 256, output : 64, 64*4 (256) again 
 
         return nn.Sequential(*layers)
-
 
 
 
