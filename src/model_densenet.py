@@ -196,7 +196,7 @@ class DenseNet(nn.Module):
                 m.bias = nn.init.normal_(m.bias)
 
 net = d169_3d(num_classes=1, sample_size=64, sample_duration=96, norm="bn", act="lrelu")
-net2 = d169_3d(num_classes=3, sample_size=64, sample_duration=96, norm="bn", act="lrelu")
+net2 = d169_3d(num_classes=2, sample_size=64, sample_duration=96, norm="bn", act="lrelu")
 
 def create_regression_ANN(device):
     return net.to(device)
