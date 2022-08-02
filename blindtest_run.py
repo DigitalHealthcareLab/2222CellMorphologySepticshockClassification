@@ -16,7 +16,7 @@ from src.blindtest_loader import get_blind_augmentation_dataset
 
 seed_everything(42)
 
-
+ 
 def main(remove_patient:int, celltype:str):
 
     logger = set_logger()
@@ -55,12 +55,13 @@ def main(remove_patient:int, celltype:str):
 
     best_model, train_loss_history, val_loss_history =  train_model_v2(model, NUM_EPOCH, dataloaders, criterion, optimizer, device, scheduler, early_stopping)
 
-    torch.save(best_model, f'model/blind_test/blindtest_{remove_patient}_{celltype}_model_2.pt') 
+    torch.save(best_model, f'model/blind_test/blindtest_{remove_patient}_{celltype}_model_1.pt') 
     LOSS_PATH = f'model/plot/blindtest_{remove_patient}_{celltype}'
     save_loss_plot(train_loss_history, val_loss_history, LOSS_PATH)
     plt.clf()
 
 if __name__ == '__main__':
-    main(2, 'cd8')
-   # main(2, 'cd4')
+    
+    main(2, 'cd4')
+
 
