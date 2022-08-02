@@ -112,25 +112,55 @@ def test_model(dataloaders, model, criterion, device) :
     labels = []
     model.eval()
     epoch_loss = 0
+
     for X,y in dataloader : 
         X = X.type(torch.FloatTensor).to(device)
-        output = model(X)
+        output, *_ = model(X)
         loss = criterion(output, y.to(device))
-        outputs.extend(output.detach().cpu().numpy())
+        outputs.extend(F.softmax(output, dim = 1).detach().cpu().numpy())
         labels.extend(y.cpu().numpy())
         epoch_loss += loss.item()
-    
+        
+    output_probs = [x[1] for x in outputs]
     outputs = np.argmax(outputs, axis = 1)
+
     acc = (outputs == labels).sum() / outputs.shape[0]
     try : 
-        auc = roc_auc_score(labels, outputs)
+        auc_p = roc_auc_score(labels, output_probs)
+        auc = roc_auc_score(labels,outputs)
     except :
         auc = 0.5
     conf = confusion_matrix(labels, outputs)
-    aupr = average_precision_score(labels,outputs)
+    aupr = average_precision_score(labels,output_probs)
 
-    return epoch_loss / len(dataloader), acc, auc, aupr, conf, labels, outputs 
+    return epoch_loss / len(dataloader), acc, auc_p, auc, aupr, conf, labels, outputs 
 
+def roc_test_model(dataloaders, model, criterion, device) :
+    dataloader = dataloaders['test']
+    outputs = []
+    labels = []
+    model.eval()
+    epoch_loss = 0
+
+    for X,y in dataloader : 
+        X = X.type(torch.FloatTensor).to(device)
+        output, *_ = model(X)
+        loss = criterion(output, y.to(device))
+        outputs.extend(F.softmax(output, dim = 1).detach().cpu().numpy())
+        labels.extend(y.cpu().numpy())
+        epoch_loss += loss.item()
+        
+    output_probs = [x[1] for x in outputs]
+    outputs = np.argmax(outputs, axis = 1)
+
+    try : 
+        auc_p = roc_auc_score(labels, output_probs)
+        auc = roc_auc_score(labels,outputs)
+    except :
+        auc = 0.5
+
+
+    return labels, output_probs, outputs 
 
 
 
