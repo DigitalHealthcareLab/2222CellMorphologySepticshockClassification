@@ -27,14 +27,16 @@ def main(test_num:int, cell_type:str):
 
       best_model = torch.load(f'model/blind_test/blindtest_{test_num}_{cell_type}_model_1.pt')
 
-      loss_sum, acc, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
-    #  roc_scores, answers, preds = calculate_roc(dataloaders['test'], best_model, device)
-    #  f1_score = f1_score(answers,preds,average='macro')
+      loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
+      answers, preds = calculate_roc(dataloaders['test'], best_model, device)
+      f1_score = f1_score(answers,preds,average='macro')
 
+      print({f'{test_num}_blindtest_{cell_type}'})
+      print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
       print({f"AUROC on test set: {auroc*100:.2f}"})
       print({f"AUPR on test set: {aupr*100:.2f}"})
       print({f"ACC on test set: {acc*100:.2f}"})
-    #  print({f"F1 Score on test set: {f1_score*100:.2f}"})
+      print({f"F1 Score on test set: {f1_score*100:.2f}"})
       print({f"loss on test set: {loss_sum}"})
       print(conf_matrix)
 
@@ -52,28 +54,23 @@ def main_test(test_num:int, cell_type:str):
 
       best_model = torch.load(f'model/blind_test/blindtest_{test_num}_{cell_type}_model_1.pt')
 
-      loss_sum, acc, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
-    #  roc_scores, answers, preds = calculate_roc(dataloaders['test'], best_model, device)
-    #  f1_score = f1_score(answers,preds,average='macro')
+      loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
+      answers, preds = calculate_roc(dataloaders['test'], best_model, device)
+      f1_score = f1_score(answers,preds, average='macro')
 
+
+      print({f'{test_num}_blindtest_{cell_type}'})
+      print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
       print({f"AUROC on test set: {auroc*100:.2f}"})
       print({f"AUPR on test set: {aupr*100:.2f}"})
       print({f"ACC on test set: {acc*100:.2f}"})
-    #  print({f"F1 Score on test set: {f1_score*100:.2f}"})
+      print({f"F1 Score on test set: {f1_score*100:.2f}"})
       print({f"loss on test set: {loss_sum}"})
       print(conf_matrix)
 
 
 if __name__ == '__main__':
 
-    print('test 7 - cd8')
-   # main(2, 'cd8')
-
     print('---------------------------------------------------------------------------------------------------')
-    print('---------------------------------------------------------------------------------------------------')
-
-    print('blind test 7 - cd8')
-    main_test(2, 'cd8')
-
-
-
+    print('blind test 8 - cd4')
+    main_test(8, 'cd4')
