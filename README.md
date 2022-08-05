@@ -11,7 +11,7 @@ Review by [Gigascience 2022 (IF:11.5)](https://academic.oup.com/gigascience).
 ## Preprocess image
 
 ## Architecture 
-![dense block.pdf](https://github.com/kimjh0107/2022_Gigascience/files/9266478/dense.block.pdf)
+![dense block1](https://user-images.githubusercontent.com/83206535/183028019-533bdfda-7379-45c9-a7e9-1f7feeddf4b9.png)
 
 ## Model result 
 
