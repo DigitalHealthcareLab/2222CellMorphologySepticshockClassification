@@ -119,20 +119,20 @@ class DenseNet(nn.Module):
             chan_data = 98
         elif self.dim == "2d":
             chan_data = 2
-        # First convolution
+        
         self.features = nn.Sequential(
             OrderedDict([
                 ('conv0',
                  nn.Conv3d(
                      chan_data,
                      num_init_features,
-                     kernel_size=3,#original densenet: 7 kernel_size=7
+                     kernel_size=3, 
                      stride=(2, 2, 2), 
-                     padding=(1, 1, 1),#original densenet: 3 padding=(3, 3, 3),
+                     padding=(1, 1, 1),
                      bias=False)),
                 ('norm0', norm(num_init_features)),
                 ('relu0', act()),
-                #('pool0', nn.MaxPool3d(kernel_size=3, stride=2, padding=1)), #original densenet: yes
+                
             ]))
 
         # Each denseblock
@@ -157,7 +157,7 @@ class DenseNet(nn.Module):
                 self.features.add_module('transition%d' % (i + 1), trans)
                 num_features = num_features // 2
 
-        # Final batch norm
+        
         self.features.add_module('norm5', norm(num_features))
         self.features.add_module('act5', act())
 
@@ -165,7 +165,7 @@ class DenseNet(nn.Module):
 
         self.avgpool = nn.AdaptiveAvgPool3d(output_size=[1,1,1])
         self.classifier = nn.Linear(self.last_features, num_classes)
-        self.gram = nn.Linear(self.last_features, 1) #later from the learned features to subtask
+        self.gram = nn.Linear(self.last_features, 1) 
         self.shape = nn.Linear(self.last_features, 1)
         self.mot = nn.Linear(self.last_features, 1)
         self.genus = nn.Linear(self.last_features, 14)
@@ -195,7 +195,6 @@ class DenseNet(nn.Module):
                 m.weight = nn.init.xavier_normal_(m.weight)
                 m.bias = nn.init.normal_(m.bias)
 
-net = d169_3d(num_classes=1, sample_size=64, sample_duration=96, norm="bn", act="lrelu")
 net2 = d169_3d(num_classes=2, sample_size=64, sample_duration=96, norm="bn", act="lrelu")
 
 def create_regression_ANN(device):
