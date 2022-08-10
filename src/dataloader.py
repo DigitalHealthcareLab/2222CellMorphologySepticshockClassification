@@ -17,14 +17,14 @@ class CustomDataset(Dataset):
     def __init__(self, images : np.array, 
                         label_list : np.array, 
                         train_mode=True, 
-                        transforms=None): #필요한 변수들을 선언
+                        transforms=None): 
         self.transforms = transforms
         self.train_mode = train_mode
         # self.img_path_list = img_path_list
         self.images = images
         self.label_list = label_list
 
-    def __getitem__(self, index): #index번째 data를 return
+    def __getitem__(self, index): 
         image = self.images[index]
         # Get image data
         # image = cv2.imread(img_path)
@@ -37,7 +37,7 @@ class CustomDataset(Dataset):
         else:
             return image 
     
-    def __len__(self): #길이 return
+    def __len__(self): 
         return len(self.images)
 
 class AddGaussianNoise(object):
@@ -56,11 +56,9 @@ train_transform = transforms.Compose([
     transforms.RandomRotation(20),
     transforms.RandomHorizontalFlip(),
     transforms.RandomVerticalFlip(),
-    #transforms.Normalize(13370.405,143.7316)
 ])
 
 test_transform = transforms.Compose([
-    #transforms.Normalize(13370.405,143.7316)
                 ])
 
 def get_augmentation_dataset(x_train_path, y_train_path, x_valid_path, y_valid_path, x_test_path, y_test_path):
