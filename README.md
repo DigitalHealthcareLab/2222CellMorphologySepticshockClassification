@@ -48,7 +48,9 @@ Total| | 2088| 2219|4307
 
 ## Model
 The model for discriminating the septic shock timepoints was developed with 3D Artificial Neural Network (ANN), the Convolutional Neural Network (CNN) based image recognition model. 
-![densebb]("https://github.com/kimjh0107/2022_Gigascience/issues/7#issue-1334178258")
+
+![dense_block]("https://github.com/kimjh0107/2022_Gigascience/issues/7#issue-1334178258")
+
 **Figure. The model architecture to discriminate the septic shock time points with 3D immune cell images**
 
 More details about model are in:
