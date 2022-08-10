@@ -27,18 +27,18 @@ def main(test_num:int, cell_type:str):
 
       best_model = torch.load(f'model/blind_test/blindtest_{test_num}_{cell_type}_model_1.pt')
 
-      loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
-      answers, preds = calculate_roc(dataloaders['test'], best_model, device)
-      f1_score = f1_score(answers,preds,average='macro')
+      #loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
 
-      print({f'{test_num}_blindtest_{cell_type}'})
-      print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
-      print({f"AUROC on test set: {auroc*100:.2f}"})
-      print({f"AUPR on test set: {aupr*100:.2f}"})
-      print({f"ACC on test set: {acc*100:.2f}"})
+      f1_score = calculate_roc(dataloaders['test'], best_model, device)
+
+      # print({f'{test_num}_blindtest_{cell_type}'})
+      # print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
+      # print({f"AUROC on test set: {auroc*100:.2f}"})
+      # print({f"AUPR on test set: {aupr*100:.2f}"})
+      # print({f"ACC on test set: {acc*100:.2f}"})
       print({f"F1 Score on test set: {f1_score*100:.2f}"})
-      print({f"loss on test set: {loss_sum}"})
-      print(conf_matrix)
+      # print({f"loss on test set: {loss_sum}"})
+      # print(conf_matrix)
 
 
 
@@ -54,23 +54,71 @@ def main_test(test_num:int, cell_type:str):
 
       best_model = torch.load(f'model/blind_test/blindtest_{test_num}_{cell_type}_model_1.pt')
 
-      loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
-      answers, preds = calculate_roc(dataloaders['test'], best_model, device)
-      f1_score = f1_score(answers,preds, average='macro')
+      #loss_sum, acc, auc_p, auroc, aupr, conf_matrix, labels , outputs = test_model(dataloaders, best_model, criterion,device)
+      #answers, preds = calculate_roc(dataloaders['test'], best_model, device)
+      f1_score = calculate_roc(dataloaders['test'], best_model, device)
+      #f1_score = f1_score(answers,preds, average='macro')
 
 
-      print({f'{test_num}_blindtest_{cell_type}'})
-      print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
-      print({f"AUROC on test set: {auroc*100:.2f}"})
-      print({f"AUPR on test set: {aupr*100:.2f}"})
-      print({f"ACC on test set: {acc*100:.2f}"})
+      # print({f'{test_num}_blindtest_{cell_type}'})
+      # print({f"AUROC probablity on test set: {auc_p*100:.2f}"})
+      # print({f"AUROC on test set: {auroc*100:.2f}"})
+      # print({f"AUPR on test set: {aupr*100:.2f}"})
+      # print({f"ACC on test set: {acc*100:.2f}"})
       print({f"F1 Score on test set: {f1_score*100:.2f}"})
-      print({f"loss on test set: {loss_sum}"})
-      print(conf_matrix)
+      # print({f"loss on test set: {loss_sum}"})
+      # print(conf_matrix)
 
 
 if __name__ == '__main__':
 
+
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 2 - cd4')
+    main(2, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 2 - cd4')
+    main_test(2, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 3 - cd4')
+    main(3, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 3 - cd4')
+    main_test(3, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 4 - cd4')
+    main(4, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 4 - cd4')
+    main_test(4, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 5 - cd4')
+    main(5, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 5 - cd4')
+    main_test(5, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 6 - cd4')
+    main(6, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 6 - cd4')
+    main_test(6, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 7 - cd4')
+    main(7, 'cd4')
+    print('---------------------------------------------------------------------------------------------------')
+    print('blind test 7 - cd4')
+    main_test(7, 'cd4')
+
+    print('---------------------------------------------------------------------------------------------------')
+    print('test 8 - cd4')
+    main(8, 'cd4')
     print('---------------------------------------------------------------------------------------------------')
     print('blind test 8 - cd4')
     main_test(8, 'cd4')
