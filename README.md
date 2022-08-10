@@ -3,7 +3,7 @@
 
 This repository contains the training code for our paper entitled "Immune cell morphology holotomography dataset for AI-driven assessment of sepsis patients"
 
-Under review by [Gigascience 2022 (IF:11.5)](https://academic.oup.com/gigascience).
+Under review by [Gigascience 2022](https://academic.oup.com/gigascience).
 
 ## Abstract
 
