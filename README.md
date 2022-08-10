@@ -60,7 +60,6 @@ More details about model are in:
 
 
 ## Architecture 
-![dense block1](https://user-images.githubusercontent.com/83206535/183028019-533bdfda-7379-45c9-a7e9-1f7feeddf4b9.png)
 
 ## Model result 
 ![cd8_ROC1](https://user-images.githubusercontent.com/83206535/183031818-eddfb5c6-9b69-4926-837e-c97c38b5a1a5.png)
