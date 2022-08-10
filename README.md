@@ -25,7 +25,7 @@ Sepsis is life-threatening organ dysfunction caused by a dysregulated host respo
 ## Dataset
 3D tomocube raw image data can be download from [here](https://drive.google.com/drive/u/0/folders/1qYqS0kBQL9gVg3qescvCZmOVddbVMuN6).
 
-**Data distribution of each cell types timepoint dataset**
+**Table. Data distribution of each cell types timepoint dataset**
 Patient ID | Time Point| CD8+ Tcell | CD4+ Tcell | Total cell count |
 -------|:-------:|:--------:|:--------:|:--------:|
 1 |1 |50 |50 | 100|
@@ -46,12 +46,18 @@ Patient ID | Time Point| CD8+ Tcell | CD4+ Tcell | Total cell count |
 8 |2 | 101|202 |303 |
 Total| | 2088| 2219|4307
 
+## Model
+The model for discriminating the septic shock timepoints was developed with 3D Artificial Neural Network (ANN), the Convolutional Neural Network (CNN) based image recognition model. 
+![densebb]("https://user-images.githubusercontent.com/83206535/183837368-1add9b75-4f96-4224-b038-202aac51c2d5.png")
+**Figure. The model architecture to discriminate the septic shock time points with 3D immune cell images**
+
+More details about model are in:
+
+(1) [Rapid species identification of pathogenic bacteria from a minute quantity exploiting three-dimensional quantitative phase imaging and artificial neural network](https://www.nature.com/articles/s41377-022-00881-x) 
+
+(2) [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 
 
-
-
-## Preprocess image
-![tomocube_workflow1](https://user-images.githubusercontent.com/83206535/183031529-892dd178-e08b-4efe-99e1-3d40037091c5.png)
 
 ## Architecture 
 ![dense block1](https://user-images.githubusercontent.com/83206535/183028019-533bdfda-7379-45c9-a7e9-1f7feeddf4b9.png)
