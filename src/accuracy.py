@@ -3,7 +3,6 @@ from sklearn.metrics import roc_auc_score, confusion_matrix, average_precision_s
 import numpy as np 
 import torch.nn.functional as F
 
-
 def calculate_roc(loader , model, device):
     num_correct = 0
     num_samples = 0
@@ -26,9 +25,9 @@ def calculate_roc(loader , model, device):
             answers.extend(y.detach().cpu().numpy())
             preds.extend(predictions.detach().cpu().numpy())
 
-       
-    
-    return answers, preds
+        #f1_score = f1_score(answers,preds, average='macro')
+
+    return  f1_score(answers,preds, average='macro')
 
  
 
