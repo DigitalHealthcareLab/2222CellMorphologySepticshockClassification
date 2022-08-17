@@ -2,5 +2,7 @@ data/
 __pycache__
 .ipynb_checkpoints 
 log/
-model/
+model/plot
+model/blind_test
+model/pretrain_model.tar
 explore/roc 
