@@ -73,9 +73,8 @@ CD4+ Tcell results are shown in Supplementary figure.
 
 ![cd8_ROC1](https://user-images.githubusercontent.com/83206535/183031818-eddfb5c6-9b69-4926-837e-c97c38b5a1a5.png)
 
-| Model       |  Top-1 ROC | Torch Model |
-| ------------- | ----------- | ------------ |
-| model_1  | 23  |    [Download (256MB)](https://drive.google.com/file/d/0By1NwtA2JPGzdVRqOEotMUZrbTA/view?usp=sharing)
+
+
 
 
 ## Contact
