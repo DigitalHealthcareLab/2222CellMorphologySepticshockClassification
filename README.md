@@ -31,7 +31,7 @@ To validate the robustness of the model, we created two test sets: One is the on
 
 <br/>
 
-3D tomocube raw image data can be download from [here](https://drive.google.com/drive/u/0/folders/1qYqS0kBQL9gVg3qescvCZmOVddbVMuN6).
+3D tomocube raw image data can be download from [here](https://drive.google.com/drive/folders/1qYqS0kBQL9gVg3qescvCZmOVddbVMuN6?usp=sharing).
 
 The table below shows the data distribution of each cell types timepoint dataset. 
 Patient ID | Time Point| CD8+ Tcell | CD4+ Tcell | Total cell count |
@@ -66,16 +66,14 @@ More details about model are in:
 
 (2) [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 
+Model we trained with these data can be download from [here](https://drive.google.com/drive/folders/1n55JlV6HEnYS4KLzLjryCZ6weEhP3XrM?usp=sharing).
+
 ## Results
 The figure below shows the results of our model on 3D tomocube CD8+ Tcell datasets. We averaged the mean value of AUROC score in the multi-patient test sets and one-patient test sets, respectively. 
 
 CD4+ Tcell results are shown in Supplementary figure. 
 
 ![cd8_ROC1](https://user-images.githubusercontent.com/83206535/183031818-eddfb5c6-9b69-4926-837e-c97c38b5a1a5.png)
-
-
-
-
 
 ## Contact
 JH Kim at kimjh0107@yonsei.ac.kr
