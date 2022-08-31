@@ -5,3 +5,4 @@ log/
 model/plot
 model/pretrain_model.tar
 explore/roc 
+data/
