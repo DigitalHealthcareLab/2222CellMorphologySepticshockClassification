@@ -5,7 +5,7 @@ This repository contains the training code for our paper entitled "Immune cell m
 
 Jong Hyun Kim, BS\*; MinDong Sung, MD\* (\* Authors contributed equally).
 
-and its journal under review by [Gigascience 2022](https://academic.oup.com/gigascience).
+and its journal under submission by [Gigascience 2022](https://academic.oup.com/gigascience).
 
 **Now with memory-efficient implementation!** Please check the [code](https://github.com/kimjh0107/2022_Gigascience/tree/main/src) for more infomation.
 
