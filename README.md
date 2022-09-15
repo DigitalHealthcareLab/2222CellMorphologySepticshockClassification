@@ -66,7 +66,7 @@ More details about model are in:
 
 (2) [Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 
-Model we trained with these data can be download from [here](https://drive.google.com/drive/folders/1n55JlV6HEnYS4KLzLjryCZ6weEhP3XrM?usp=sharing).
+Model we trained with these data can be download from [here](https://drive.google.com/drive/folders/10yFN55f6065lihJoOBjsu3xyQO6_vA-Z?usp=sharing).
 
 ## Results
 The figure below shows the results of our model on 3D tomocube CD8+ Tcell datasets. We averaged the mean value of AUROC score in the multi-patient test sets and one-patient test sets, respectively. 
